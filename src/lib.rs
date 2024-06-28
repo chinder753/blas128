@@ -103,9 +103,4 @@ mod tests {
             println!("v1/v2: {:?}", v1.clone() / v2.clone());
         }
     }
-
-    #[test]
-    fn cint_test() {
-        println!("{:?}", CINTlen_cart(2));
-    }
 }
