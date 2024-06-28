@@ -1,0 +1,12 @@
+[package]
+name = "rblasjs"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/chinder753/rblasjs"
+license = "GPL-2.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
