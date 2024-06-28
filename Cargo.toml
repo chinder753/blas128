@@ -1,8 +1,8 @@
 [package]
-name = "rblasjs"
+name = "blas128"
 version = "0.1.0"
 edition = "2021"
-repository = "https://github.com/chinder753/rblasjs"
+repository = "https://github.com/chinder753/blas128"
 license = "GPL-2.0"
 
 [lib]
