@@ -1,11 +1,6 @@
-use std::ops::{Add, AddAssign};
-use std::ops::{Div, DivAssign};
-use std::ops::{Mul, MulAssign};
-use std::ops::{Sub, SubAssign};
-use std::simd::Simd;
+use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign};
 
-use super::super::float::Float;
-use super::Complex;
+use super::{super::float::Float, Complex};
 
 macro_rules! complex_ops_raw_impl {
     ($vec_name:ident, $bound_assign:ident, $method_assign:ident, $bound:ident, $method:ident) => {
@@ -76,3 +71,14 @@ macro_rules! complex_ops_impl {
 }
 
 complex_ops_impl!(Complex);
+
+impl<T: Float> Neg for Complex<T> {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        Self {
+            rel: -self.rel,
+            img: -self.img,
+        }
+    }
+}

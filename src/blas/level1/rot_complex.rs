@@ -1,8 +1,3 @@
-use crate::wasm_bindgen;
-
-use crate::num::{float, zero::zero};
-use crate::vector::Vector;
-
 macro_rules! blas_leve1_rot_complex_impl {
     ($t:ident) => {
         impl Vector<Complex<$t>> {

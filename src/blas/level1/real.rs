@@ -1,4 +1,4 @@
-use crate::num::{float, zero::zero};
+use crate::num::zero::zero;
 use crate::vector::Vector;
 
 macro_rules! blas_real_leve1_impl {

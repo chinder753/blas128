@@ -1,13 +1,9 @@
-use std::mem::size_of;
-use std::simd::Simd;
-
-use std::ops::{Add, AddAssign};
-use std::ops::{Div, DivAssign};
-use std::ops::{Index, IndexMut};
-use std::ops::{Mul, MulAssign};
-use std::ops::{Sub, SubAssign};
+use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign};
 
 use super::{Vector, VectorElement};
+
+mod ops_complex;
+mod ops_real;
 
 macro_rules! vector_ops_real_reload_impl {
     ($assign_bound:ident, $assign_method:ident, $bound:ident, $method:ident) => {
@@ -42,3 +38,13 @@ macro_rules! vector_ops_impl {
 }
 
 vector_ops_impl!();
+
+impl<T: VectorElement> Neg for Vector<T> {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        let mut r = self;
+        r.iter_mut().for_each(|x| *x = -(*x));
+        r
+    }
+}

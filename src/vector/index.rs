@@ -1,10 +1,4 @@
-use std::{
-    any::type_name,
-    mem::size_of,
-    ops::{Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Sub, SubAssign},
-};
-
-use crate::num::{complex::Complex, float};
+use std::ops::{Index, IndexMut};
 
 use super::{Vector, VectorElement};
 

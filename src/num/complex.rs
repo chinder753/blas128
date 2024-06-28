@@ -1,10 +1,8 @@
+use super::float::Float;
+
 mod ops;
 mod ops_simd;
 mod simd;
-
-use std::simd::Simd;
-
-use super::float::Float;
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct Complex<T: Float> {

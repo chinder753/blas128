@@ -1,12 +1,9 @@
+use crate::vector::{vecele::VectorElement, Vector};
+
 mod complex;
 mod real;
 mod rot_complex;
 mod rot_real;
-
-use crate::num::complex::Complex;
-use crate::num::float;
-use crate::num::zero::zero;
-use crate::vector::{vecele::VectorElement, Vector};
 
 impl<T: VectorElement> Vector<T> {
     pub fn axpy(&mut self, a: T, y: Self) {

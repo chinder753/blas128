@@ -1,10 +1,8 @@
-use std::ops::{Add, AddAssign};
-use std::ops::{Div, DivAssign};
-use std::ops::{Mul, MulAssign};
-use std::ops::{Sub, SubAssign};
-use std::simd::Simd;
+use std::{
+    ops::{Add, Sub},
+    simd::Simd,
+};
 
-use super::super::float::Float;
 use super::Complex;
 
 macro_rules! complex_ops_raw_impl {

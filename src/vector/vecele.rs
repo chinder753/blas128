@@ -1,17 +1,13 @@
 use std::fmt::Debug;
 use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign};
 
-use crate::num::{
-    complex::Complex,
-    float::{self, Float},
-    one::One,
-    zero::{zero, Zero},
-};
+use crate::num::{complex::Complex, one::One, zero::Zero};
 
 pub trait VectorElement
 where
     Self: Zero + One,
     Self: Debug + Copy,
+    Self: Neg<Output = Self>,
     Self: Add<Output = Self> + AddAssign,
     Self: Sub<Output = Self> + SubAssign,
     Self: Div<Output = Self> + DivAssign,

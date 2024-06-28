@@ -1,12 +1,6 @@
-use std::{
-    simd::Simd,
-    slice::{Chunks, Iter, IterMut},
-};
+use std::slice::{Chunks, Iter, IterMut};
 
-use crate::{
-    num::complex::Complex,
-    simd::{F32_LANE, F64_LANE, V128},
-};
+use crate::{num::complex::Complex, simd::V128};
 
 use super::{Vector, VectorElement};
 

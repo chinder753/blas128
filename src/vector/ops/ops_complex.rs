@@ -1,11 +1,7 @@
-use std::mem::size_of;
-use std::simd::Simd;
-
-use std::ops::{Add, AddAssign};
-use std::ops::{Div, DivAssign};
-use std::ops::{Index, IndexMut};
-use std::ops::{Mul, MulAssign};
-use std::ops::{Sub, SubAssign};
+use std::{
+    mem::size_of,
+    ops::{AddAssign, DivAssign, MulAssign, SubAssign},
+};
 
 use crate::num::complex::Complex;
 

@@ -1,15 +1,4 @@
 use std::fmt::Debug;
-use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign};
-
-mod index;
-mod iter;
-mod ops;
-mod ops_complex;
-mod ops_real;
-mod simd;
-pub mod vecele;
-
-use vecele::VectorElement;
 
 use crate::num::{
     complex::Complex,
@@ -17,6 +6,14 @@ use crate::num::{
     one::One,
     zero::{zero, Zero},
 };
+
+use vecele::VectorElement;
+
+mod index;
+mod iter;
+mod ops;
+
+pub mod vecele;
 
 #[derive(Debug, Clone)]
 pub struct Vector<T: VectorElement> {

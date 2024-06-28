@@ -1,8 +1,7 @@
-use crate::wasm_bindgen;
-
-use crate::num::complex::Complex;
-use crate::num::zero::zero;
-use crate::vector::Vector;
+use crate::{
+    num::{complex::Complex, zero::zero},
+    vector::Vector,
+};
 
 macro_rules! blas_complex_leve1_impl {
     ($t:ident) => {
