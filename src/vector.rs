@@ -1,11 +1,6 @@
 use std::fmt::Debug;
 
-use crate::num::{
-    complex::Complex,
-    float::{self, Float},
-    one::One,
-    zero::{zero, Zero},
-};
+use crate::num::zero::zero;
 
 use vecele::VectorElement;
 
