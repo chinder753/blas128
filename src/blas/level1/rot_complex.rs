@@ -1,6 +1,12 @@
+use crate::wasm_bindgen;
+
+use crate::num::{float, zero::zero};
+use crate::vector::{VectorF32, VectorF64};
+
 macro_rules! blas_leve1_rot_complex_impl {
-    ($t:ident) => {
-        impl Vector<Complex<$t>> {
+    ($vec_name:ident, $t:ident) => {
+        #[wasm_bindgen]
+        impl $vec_name {
             pub fn rot(x: &mut $vec_name, y: &mut $vec_name, c: $t, s: $t) {
                 assert_eq!(x.get_len(), y.get_len());
                 for i in 0..x.get_len() {
@@ -69,5 +75,5 @@ macro_rules! blas_leve1_rot_complex_impl {
     };
 }
 
-// blas_leve1_rot_real_impl!(f32);
-// blas_leve1_rot_real_impl!(f64);
+// blas_leve1_rot_real_impl!(VectorF32, f32);
+// blas_leve1_rot_real_impl!(VectorF64, f64);

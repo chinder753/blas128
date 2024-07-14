@@ -1,34 +1,36 @@
-use crate::{
-    num::{complex::Complex, zero::zero},
-    vector::Vector,
-};
+use crate::wasm_bindgen;
+
+use crate::num::zero::zero;
+use crate::num::complex::{Complex32, Complex64};
+use crate::vector::{VectorC32, VectorC64};
 
 macro_rules! blas_complex_leve1_impl {
-    ($t:ident) => {
-        impl Vector<Complex<$t>> {
-            pub fn asum(&self) -> $t {
-                let mut r: $t = zero();
+    ($vec_name:ident, $t:ident, $ot: ident) => {
+        #[wasm_bindgen]
+        impl $vec_name {
+            pub fn asum(&self) -> $ot {
+                let mut r: $ot = zero();
                 for i in 0..self.get_len() {
                     r = r + self[i].nrm2();
                 }
                 r
             }
-            pub fn dotc(&self, rhs: Self) -> Complex<$t> {
+            pub fn dotc(&self, rhs: Self) -> $t {
                 let mut sum = zero();
                 for i in 0..self.get_len() {
                     sum += self[i].conj() * rhs[i]
                 }
                 sum
             }
-            pub fn dotu(&self, rhs: Self) -> Complex<$t> {
+            pub fn dotu(&self, rhs: Self) -> $t {
                 let mut sum = zero();
                 for i in 0..self.get_len() {
                     sum += self[i] * rhs[i]
                 }
                 sum
             }
-            pub fn nrm2(&self) -> $t {
-                let mut r: $t = zero();
+            pub fn nrm2(&self) -> $ot {
+                let mut r: $ot = zero();
                 for i in 0..self.get_len() {
                     r += self[i].nrm2();
                 }
@@ -38,5 +40,5 @@ macro_rules! blas_complex_leve1_impl {
     };
 }
 
-blas_complex_leve1_impl!(f32);
-blas_complex_leve1_impl!(f64);
+blas_complex_leve1_impl!(VectorC32, Complex32, f32);
+blas_complex_leve1_impl!(VectorC64, Complex64, f64);

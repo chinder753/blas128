@@ -1,5 +1,5 @@
 [package]
-name = "blas128"
+name = "rblasjs"
 version = "0.1.0"
 edition = "2021"
 repository = "https://github.com/chinder753/blas128"

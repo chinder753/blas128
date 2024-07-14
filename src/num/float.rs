@@ -1,23 +1,17 @@
 use std::{
-    fmt::{Debug, Display},
-    ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign},
-    simd::SimdElement,
+    fmt::Display,
+    ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Sub, SubAssign},
 };
 
 use super::{one::One, zero::Zero};
 
 pub(crate) trait Float
 where
-    Self: SimdElement,
-    Self: Display + Debug,
-    Self: Copy,
-    Self: Zero + One,
-    Self: Neg<Output=Self>,
-    Self: PartialOrd,
-    Self: Add<Output=Self> + AddAssign,
-    Self: Sub<Output=Self> + SubAssign,
-    Self: Div<Output=Self> + DivAssign,
-    Self: Mul<Output=Self> + MulAssign,
+    Self: Zero + One + Copy + Display,
+    Self: Add<Output = Self> + AddAssign,
+    Self: Sub<Output = Self> + SubAssign,
+    Self: Div<Output = Self> + DivAssign,
+    Self: Mul<Output = Self> + MulAssign,
 {
     fn sqrt(self) -> Self;
     fn powi(self, n: i32) -> Self;

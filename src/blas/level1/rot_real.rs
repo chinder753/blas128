@@ -1,9 +1,13 @@
-use crate::vector::Vector;
+use crate::wasm_bindgen;
+
+use crate::num::{float, zero::zero};
+use crate::vector::{VectorF32, VectorF64};
 
 macro_rules! blas_leve1_rot_real_impl {
-    ($t:ident) => {
-        impl Vector<$t> {
-            pub fn rot(x: &mut Self, y: &mut Self, c: $t, s: $t) {
+    ($vec_name:ident, $t:ident) => {
+        #[wasm_bindgen]
+        impl $vec_name {
+            pub fn rot(x: &mut $vec_name, y: &mut $vec_name, c: $t, s: $t) {
                 assert_eq!(x.get_len(), y.get_len());
                 for i in 0..x.get_len() {
                     let xi = x[i];
@@ -26,7 +30,7 @@ macro_rules! blas_leve1_rot_real_impl {
                 }
                 vec![r, z, c, s]
             }
-            pub fn rotm(x: &mut Self, y: &mut Self, param: Vec<$t>) {
+            pub fn rotm(x: &mut $vec_name, y: &mut $vec_name, param: Vec<$t>) {
                 assert_eq!(param.len(), 5);
                 assert_eq!(x.get_len(), y.get_len());
                 match param[0] {
@@ -71,5 +75,5 @@ macro_rules! blas_leve1_rot_real_impl {
     };
 }
 
-blas_leve1_rot_real_impl!(f32);
-blas_leve1_rot_real_impl!(f64);
+blas_leve1_rot_real_impl!(VectorF32, f32);
+blas_leve1_rot_real_impl!(VectorF64, f64);

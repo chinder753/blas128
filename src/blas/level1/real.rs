@@ -1,9 +1,12 @@
-use crate::num::zero::zero;
-use crate::vector::Vector;
+use crate::wasm_bindgen;
+
+use crate::num::{float, zero::zero};
+use crate::vector::{VectorF32, VectorF64};
 
 macro_rules! blas_real_leve1_impl {
-    ($t:ident) => {
-        impl Vector<$t> {
+    ($vec_name:ident, $t:ident) => {
+        #[wasm_bindgen]
+        impl $vec_name {
             pub fn asum(&self) -> $t {
                 let mut r: $t = zero();
                 for i in 0..self.get_len() {
@@ -29,5 +32,5 @@ macro_rules! blas_real_leve1_impl {
     };
 }
 
-blas_real_leve1_impl!(f32);
-blas_real_leve1_impl!(f64);
+blas_real_leve1_impl!(VectorF32, f32);
+blas_real_leve1_impl!(VectorF64, f64);

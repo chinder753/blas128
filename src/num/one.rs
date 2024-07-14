@@ -1,9 +1,9 @@
 use std::ops::{Add, Mul};
 
-use super::{complex::Complex, float::Float};
+use super::complex::{Complex32, Complex64};
 
 pub(crate) trait One:
-Sized + Add<Output=Self> + Mul<Output=Self> + Mul<Self, Output=Self>
+    Sized + Add<Output = Self> + Mul<Output = Self> + Mul<Self, Output = Self>
 {
     fn one() -> Self;
     fn is_one(&self) -> bool;
@@ -29,15 +29,21 @@ impl One for f64 {
     }
 }
 
-impl<T: Float> One for Complex<T> {
+impl One for Complex32 {
     fn one() -> Self {
-        Self {
-            rel: T::one(),
-            img: T::zero(),
-        }
+        Self { rel: 1.0, img: 0.0 }
     }
     fn is_one(&self) -> bool {
-        self.rel == T::one() && self.img == T::zero()
+        self.rel == 1.0 && self.img == 0.0
+    }
+}
+
+impl One for Complex64 {
+    fn one() -> Self {
+        Self { rel: 1.0, img: 0.0 }
+    }
+    fn is_one(&self) -> bool {
+        self.rel == 1.0 && self.img == 0.0
     }
 }
 
