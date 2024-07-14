@@ -7,11 +7,11 @@ pub trait VectorElement
 where
     Self: Zero + One,
     Self: Debug + Copy,
-    Self: Neg<Output = Self>,
-    Self: Add<Output = Self> + AddAssign,
-    Self: Sub<Output = Self> + SubAssign,
-    Self: Div<Output = Self> + DivAssign,
-    Self: Mul<Output = Self> + MulAssign,
+    Self: Neg<Output=Self>,
+    Self: Add<Output=Self> + AddAssign,
+    Self: Sub<Output=Self> + SubAssign,
+    Self: Div<Output=Self> + DivAssign,
+    Self: Mul<Output=Self> + MulAssign,
 {
     fn max(self, other: Self) -> Self;
     fn min(self, other: Self) -> Self;

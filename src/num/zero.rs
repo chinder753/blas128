@@ -3,7 +3,7 @@ use std::ops::{Add, Mul};
 use super::{complex::Complex, float::Float};
 
 pub(crate) trait Zero:
-    Sized + Add<Output = Self> + Mul<Output = Self> + Mul<Self, Output = Self>
+Sized + Add<Output=Self> + Mul<Output=Self> + Mul<Self, Output=Self>
 {
     fn zero() -> Self;
     fn is_zero(&self) -> bool;

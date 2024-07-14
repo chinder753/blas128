@@ -3,7 +3,7 @@ use std::ops::{Add, Mul};
 use super::{complex::Complex, float::Float};
 
 pub(crate) trait One:
-    Sized + Add<Output = Self> + Mul<Output = Self> + Mul<Self, Output = Self>
+Sized + Add<Output=Self> + Mul<Output=Self> + Mul<Self, Output=Self>
 {
     fn one() -> Self;
     fn is_one(&self) -> bool;
