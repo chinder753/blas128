@@ -1,4 +1,4 @@
-use crate::vector::Vector;
+use crate::vector::{Vector, VectorBasic};
 
 macro_rules! blas_leve1_rot_real_impl {
     ($t:ident) => {

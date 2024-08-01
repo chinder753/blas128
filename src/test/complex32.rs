@@ -1,9 +1,12 @@
 #[test]
 fn complex32_test() {
-    use crate::{num::complex::Complex, vector::Vector};
+    use crate::{
+        num::complex::{Complex, ComplexMath},
+        vector::{Vector, VectorBasic},
+    };
     println!("\ncomplex computation");
-    let a: Complex<f32> = Complex { rel: 3.0, img: 5.0 };
-    let b: Complex<f32> = Complex { rel: 1.0, img: 2.0 };
+    let a: Complex<f32> = Complex { re: 3.0, im: 5.0 };
+    let b: Complex<f32> = Complex { re: 1.0, im: 2.0 };
     println!("a: {:?}", a);
     println!("a.nrm2(): {:?}", a.nrm2());
     println!("b: {:?}", b);

@@ -12,12 +12,12 @@ where
     Self: Display + Debug,
     Self: Copy,
     Self: Zero + One,
-    Self: Neg<Output=Self>,
+    Self: Neg<Output = Self>,
     Self: PartialOrd,
-    Self: Add<Output=Self> + AddAssign,
-    Self: Sub<Output=Self> + SubAssign,
-    Self: Div<Output=Self> + DivAssign,
-    Self: Mul<Output=Self> + MulAssign,
+    Self: Add<Output = Self> + AddAssign,
+    Self: Sub<Output = Self> + SubAssign,
+    Self: Div<Output = Self> + DivAssign,
+    Self: Mul<Output = Self> + MulAssign,
 {
     fn sqrt(self) -> Self;
     fn powi(self, n: i32) -> Self;

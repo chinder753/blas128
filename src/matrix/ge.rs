@@ -1,9 +1,9 @@
 use crate::matrix::Matrix;
-use crate::vector::vecele::VectorElement;
+use crate::vector::vec_ele::VectorElement;
 
-mod ops;
-mod index;
 mod impl_matrix;
+mod index;
+mod ops;
 
 #[derive(Debug, Clone)]
 pub struct MatrixGe<T: VectorElement>

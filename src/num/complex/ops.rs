@@ -1,13 +1,13 @@
 use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub, SubAssign};
 
-use super::{super::float::Float, Complex};
+use super::{super::float::Float, Complex, ComplexMath};
 
 macro_rules! complex_ops_raw_impl {
     ($vec_name:ident, $bound_assign:ident, $method_assign:ident, $bound:ident, $method:ident) => {
         impl<T: Float> $bound_assign for $vec_name<T> {
             fn $method_assign(&mut self, rhs: Self) {
-                self.rel = $bound::$method(self.rel, rhs.rel);
-                self.img = $bound::$method(self.img, rhs.img);
+                self.re = $bound::$method(self.re, rhs.re);
+                self.im = $bound::$method(self.im, rhs.im);
             }
         }
 
@@ -26,10 +26,10 @@ macro_rules! complex_mul_div_impl {
     ($vec_name:ident) => {
         impl<T: Float> MulAssign for $vec_name<T> {
             fn mul_assign(&mut self, rhs: Self) {
-                let rel = self.rel * rhs.rel - self.img * rhs.img;
-                let img = self.rel * rhs.img + self.img * rhs.rel;
-                self.rel = rel;
-                self.img = img;
+                let rel = self.re * rhs.re - self.im * rhs.im;
+                let img = self.re * rhs.im + self.im * rhs.re;
+                self.re = rel;
+                self.im = img;
             }
         }
 
@@ -46,8 +46,8 @@ macro_rules! complex_mul_div_impl {
             fn div_assign(&mut self, rhs: Self) {
                 let nrm2 = rhs.nrm2();
                 *self *= rhs.conj();
-                self.rel /= nrm2;
-                self.img /= nrm2;
+                self.re /= nrm2;
+                self.im /= nrm2;
             }
         }
 
@@ -77,8 +77,8 @@ impl<T: Float> Neg for Complex<T> {
 
     fn neg(self) -> Self::Output {
         Self {
-            rel: -self.rel,
-            img: -self.img,
+            re: -self.re,
+            im: -self.im,
         }
     }
 }

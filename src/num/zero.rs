@@ -3,7 +3,7 @@ use std::ops::{Add, Mul};
 use super::{complex::Complex, float::Float};
 
 pub(crate) trait Zero:
-Sized + Add<Output=Self> + Mul<Output=Self> + Mul<Self, Output=Self>
+    Sized + Add<Output = Self> + Mul<Output = Self> + Mul<Self, Output = Self>
 {
     fn zero() -> Self;
     fn is_zero(&self) -> bool;
@@ -30,12 +30,12 @@ impl Zero for f64 {
 impl<T: Float> Zero for Complex<T> {
     fn zero() -> Self {
         Self {
-            rel: T::zero(),
-            img: T::zero(),
+            re: T::zero(),
+            im: T::zero(),
         }
     }
     fn is_zero(&self) -> bool {
-        self.rel == T::zero() && self.img == T::zero()
+        self.re == T::zero() && self.im == T::zero()
     }
 }
 

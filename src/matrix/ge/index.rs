@@ -1,6 +1,6 @@
-use std::ops::{Index, IndexMut};
-use crate::vector::vecele::VectorElement;
 use super::MatrixGe;
+use crate::vector::vec_ele::VectorElement;
+use std::ops::{Index, IndexMut};
 
 impl<T: VectorElement> Index<[usize; 2]> for MatrixGe<T> {
     type Output = T;

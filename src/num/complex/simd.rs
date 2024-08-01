@@ -1,17 +1,24 @@
-use std::simd::Simd;
+use std::simd::{LaneCount, Simd, SupportedLaneCount};
 
-use crate::simd::V128;
+use crate::{num::float::Float, simd::V128};
 
 use super::Complex;
 
-impl Complex<f64> {
-    pub(crate) fn to_v128(&self) -> V128<f64> {
-        Simd::from_array([self.rel, self.img])
+pub(crate) trait ComplexToV128<T: Float>
+where
+    LaneCount<{ 16 / size_of::<T>() }>: SupportedLaneCount,
+{
+    fn to_v128(&self) -> V128<T>;
+}
+
+impl ComplexToV128<f64> for Complex<f64> {
+    fn to_v128(&self) -> V128<f64> {
+        Simd::from_array([self.re, self.im])
     }
 }
 
-impl Complex<f32> {
-    pub(crate) fn to_v128(&self) -> V128<f32> {
-        Simd::from_array([self.rel, self.img, 0.0, 0.0])
+impl ComplexToV128<f32> for Complex<f32> {
+    fn to_v128(&self) -> V128<f32> {
+        Simd::from_array([self.re, self.im, 0.0, 0.0])
     }
 }

@@ -2,17 +2,16 @@ use crate::matrix::ge::MatrixGe;
 use crate::matrix::Matrix;
 use crate::num::one::one;
 use crate::num::zero::zero;
-use crate::vector::vecele::VectorElement;
+use crate::vector::vec_ele::VectorElement;
 
 impl<T: VectorElement> Matrix<T> for MatrixGe<T> {
     fn row(&self) -> usize {
         self.row
     }
-    
+
     fn col(&self) -> usize {
         self.col
     }
-
 
     fn new(value: Vec<Vec<T>>) -> Self {
         let row = value.len();
@@ -44,9 +43,8 @@ impl<T: VectorElement> Matrix<T> for MatrixGe<T> {
         r
     }
 
-
     fn from_array<const R: usize, const C: usize>(array: [[T; C]; R]) -> Self {
-        Self{
+        Self {
             row: R,
             col: C,
             value: array.iter().flat_map(|x| *x).collect(),

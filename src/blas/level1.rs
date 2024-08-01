@@ -1,4 +1,4 @@
-use crate::vector::{vecele::VectorElement, Vector};
+use crate::vector::{vec_ele::VectorElement, Vector, VectorBasic};
 
 mod complex;
 mod real;
@@ -25,18 +25,30 @@ impl<T: VectorElement> Vector<T> {
             y[i] = temp_v;
         }
     }
-    pub fn iamax(self) -> T {
+    pub fn iamax(self) -> usize {
         let mut max: T = self[0];
-        for i in 1..self.get_len() {
-            max = max.max(self[i]);
+        match self
+            .iter()
+            .enumerate()
+            .max_by(|(i, x), (j, y)| match x.partial_cmp(y) {
+                Some(cmp_res) => cmp_res,
+                None => panic!(""),
+            }) {
+            Some((index, max)) => index,
+            None => panic!(""),
         }
-        max
     }
-    pub fn iamin(self) -> T {
-        let mut min: T = self[0];
-        for i in 1..self.get_len() {
-            min = min.min(self[i]);
+    pub fn iamin(self) -> usize {
+        let mut max: T = self[0];
+        match self
+            .iter()
+            .enumerate()
+            .min_by(|(i, x), (j, y)| match x.partial_cmp(y) {
+                Some(cmp_res) => cmp_res,
+                None => panic!(""),
+            }) {
+            Some((index, max)) => index,
+            None => panic!(""),
         }
-        min
     }
 }

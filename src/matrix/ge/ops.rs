@@ -3,7 +3,7 @@ use std::ops::{Div, DivAssign};
 use std::ops::{Mul, MulAssign};
 use std::ops::{Sub, SubAssign};
 
-use crate::vector::vecele::VectorElement;
+use crate::vector::vec_ele::VectorElement;
 
 use super::MatrixGe;
 
@@ -43,11 +43,11 @@ macro_rules! matrix_ops_impl {
 
         impl<T: VectorElement> Neg for MatrixGe<T> {
             type Output = Self;
-        
+
             fn neg(self) -> Self::Output {
                 let mut r = self;
-                for i in 0..r.row{
-                    for j in 0..r.col{
+                for i in 0..r.row {
+                    for j in 0..r.col {
                         r[i][j] = -r[i][j];
                     }
                 }
@@ -58,7 +58,3 @@ macro_rules! matrix_ops_impl {
 }
 
 matrix_ops_impl!();
-
-
-
-

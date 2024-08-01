@@ -4,6 +4,18 @@ use crate::{num::complex::Complex, simd::V128};
 
 use super::{Vector, VectorElement};
 
+// trait VectorIterSimd<T: Float> {
+//     fn chunks(&self, chunk_size: usize) -> Chunks<'_, T> {
+//         self.value.chunks(chunk_size)
+//     }
+//     fn iter(&self) -> Iter<'_, T> {
+//         self.value.iter()
+//     }
+//     fn iter_mut(&mut self) -> IterMut<'_, T> {
+//         self.value.iter_mut()
+//     }
+// }
+
 impl<T: VectorElement> Vector<T> {
     pub fn chunks(&self, chunk_size: usize) -> Chunks<'_, T> {
         self.value.chunks(chunk_size)

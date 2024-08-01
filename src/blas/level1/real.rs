@@ -1,5 +1,5 @@
 use crate::num::zero::zero;
-use crate::vector::Vector;
+use crate::vector::{Vector, VectorBasic};
 
 macro_rules! blas_real_leve1_impl {
     ($t:ident) => {

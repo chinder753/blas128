@@ -2,13 +2,13 @@ use std::fmt::Debug;
 
 use crate::num::zero::zero;
 
-use vecele::VectorElement;
+use vec_ele::VectorElement;
 
 mod index;
 mod iter;
 mod ops;
 
-pub mod vecele;
+pub mod vec_ele;
 
 #[derive(Debug, Clone)]
 pub struct Vector<T: VectorElement> {
@@ -16,29 +16,36 @@ pub struct Vector<T: VectorElement> {
     value: Vec<T>,
 }
 
-impl<T: VectorElement> Vector<T> {
-    pub fn new(value: Vec<T>) -> Self {
+pub trait VectorBasic<T: VectorElement> {
+    fn new(value: Vec<T>) -> Self;
+    fn zero(len: usize) -> Self;
+    fn fill(n: T, len: usize) -> Self;
+    fn get_len(&self) -> usize;
+}
+
+impl<T: VectorElement> VectorBasic<T> for Vector<T> {
+    fn new(value: Vec<T>) -> Self {
         Self {
             len: value.len(),
             value: value.clone(),
         }
     }
 
-    pub fn zero(len: usize) -> Self {
+    fn zero(len: usize) -> Self {
         Self {
             len,
             value: vec![zero(); len],
         }
     }
 
-    pub fn fill(n: T, len: usize) -> Self {
+    fn fill(n: T, len: usize) -> Self {
         Self {
             len,
             value: vec![n; len],
         }
     }
 
-    pub fn get_len(&self) -> usize {
+    fn get_len(&self) -> usize {
         self.len
     }
 }

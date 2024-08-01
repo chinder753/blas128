@@ -1,6 +1,10 @@
 use crate::{
-    num::{complex::Complex, zero::zero},
-    vector::Vector,
+    num::{
+        complex::{Complex, ComplexMath},
+        float::Float,
+        zero::zero,
+    },
+    vector::{Vector, VectorBasic},
 };
 
 macro_rules! blas_complex_leve1_impl {
